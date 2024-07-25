@@ -14,12 +14,12 @@ levels = {
 def play_game(level):
 
     if level not in levels:
-        print("Invalid level.")
+        print("Уровень не найден")
         return
     
  
     word_to_speak = random.choice(levels[level])
-    print(f"Say the word: {word_to_speak}")
+    print(f"Скажите слово: {word_to_speak}")
     
 
     with mic as audio_file:
@@ -27,13 +27,13 @@ def play_game(level):
         audio = recog.listen(audio_file)
     
     user_input = recog.recognize_google(audio, language="en-US")
-    print(f"You said: {user_input}")
+    print(f"Вы сказали: {user_input}")
 
     if user_input.lower() == word_to_speak.lower():
-        print("Correct!")
+        print("Правильно")
         return True
     else:
-        print("Incorrect.")
+        print("Неверно")
         return False
     
 
